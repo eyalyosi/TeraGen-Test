@@ -7,11 +7,12 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 gap:10px;
-margin-top:20px
+margin-top:20px;
+margin-bottom:20px;
 `
 
 const ReviewList = ({ reviews, remove }) => {
-    console.log(reviews);
+
     return (
         <Section>
             {reviews.map((review) => {
@@ -19,7 +20,6 @@ const ReviewList = ({ reviews, remove }) => {
             })}
         </Section>
     )
-
 }
 
 export default ReviewList

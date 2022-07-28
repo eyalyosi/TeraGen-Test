@@ -17,7 +17,6 @@ async function remove(id) {
 }
 
 async function add(review) {
-    console.log(review);
     return axios.post(BASE_URL, review )
 }
 

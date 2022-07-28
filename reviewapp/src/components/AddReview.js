@@ -46,7 +46,7 @@ font-size: 14px;
 line-height: 18px;
 display: flex;
 align-items: center;
-border: 0px;
+border: none;
 color: #39454C;
 ::placeholder {
     color: #C4D2DC;
@@ -73,7 +73,7 @@ font-size: 14px;
 line-height: 18px;
 display: flex;
 align-items: center;
-border: 0px;
+border: none;
 color: #39454C;
 ::placeholder {
     color: #C4D2DC;
@@ -86,6 +86,7 @@ height: 45px;
 border: 0px;
 background: #FF206F;
 border-radius: 10px;
+font-weight:bold;
 color: #FFFFFF;
 &:hover {
     cursor: pointer
@@ -99,6 +100,7 @@ background: #EBEFF7;
 `
 
 const AddReview = ({ title, onChangeTitle, text, setText, add }) => {
+
     return (
         <Section action="" onSubmit={add}>
             <TitleFrame>

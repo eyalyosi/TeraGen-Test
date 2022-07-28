@@ -25,6 +25,7 @@ padding: 10px 30px 12px 15px;
 height: 54px;
 background: rgba(255, 255, 255, 0.1);
 border-radius: 10px 10px 10px 2px;
+text-align:left;
 &:hover {
     background: rgba(255, 255, 255, 0.25);
 }
@@ -37,16 +38,18 @@ const Title = styled.div`
 display: flex;
 align-items: center;
 color: #FFFFFF;
+font-weight:bold;
+font-size: 12px;
 `
 
 const Text = styled.div`
 display: flex;
 align-items: center;
 color: rgba(255, 255, 255, 0.5);
+font-size: 12px;
 `
 
 const ReviewPreview = ({ review, remove }) => {
-
     return (
         <ReviewCard>
             <Title>{review.title}</Title>

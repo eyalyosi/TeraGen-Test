@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { reviewService } from './reviewService'
 
-const useFetchData = () => {
+const useFetchData = (x) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
@@ -28,10 +28,13 @@ const useFetchData = () => {
             }
         }
         fetchData()
+
         return () => {
             cancel = true
         }
-    }, []);
+
+    }, [x]);
+
     return { loading, error, data }
 }
 

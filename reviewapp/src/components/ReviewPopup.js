@@ -1,48 +1,47 @@
 import styled from 'styled-components'
-import { useEffect, useState } from 'react';
+import ReviewPanel from "./ReviewPanel"
+import ReviewActionPanel from './ReviewActionPanel'
+import { useState } from 'react';
 import { reviewService } from '../services/reviewService'
-import AddReview from "./AddReview"
-import ReviewList from './ReviewList';
 import useFetchData from '../services/useFetchData'
 
 const Section = styled.section`
+width: 830px;
 display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 20px 20px 0px;
-width: 470px;
-/* height: 549px;*/ 
-background: linear-gradient(72.2deg, #39454C 0%, #64757E 100%);
-border-radius: 20px 0px 0px 20px;
 `
 
 const ReviewPopup = () => {
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
-    // const [reviews, setReviews] = useState([])
-
-    const { loading, error, data: reviews } = useFetchData()
-
-    const onChangeTitle = (value) => {
-        if (value.length > 255) return
-        setTitle(value);
-    }
+    const [x, setX] = useState(0)
+    const { loading, error, data: reviews } = useFetchData(x)
 
     const add = async (event) => {
         event.preventDefault();
         await reviewService.add({ title, text })
         setText('')
         setTitle('')
+        setX(x + 1)
+    }
+
+    const onChangeTitle = (value) => {
+        if (value.length > 255) return
+        setTitle(value);
     }
 
     const remove = async (id) => {
         await reviewService.remove(id)
+        setX(x - 1)
     }
 
-    return (
+    if (!reviews && !reviews?.length) {
+        return (
+            <div>Loading</div>
+        )
+    } else return (
         <Section>
-            <AddReview title={title} onChangeTitle={onChangeTitle} text={text} setText={setText} add={add} />
-            {reviews && <ReviewList reviews={reviews} remove={remove} />}
+            <ReviewPanel title={title} text={text} reviews={reviews} add={add} setText={setText} onChangeTitle={onChangeTitle} remove={remove} />
+            <ReviewActionPanel reviewsLength={reviews.length} />
         </Section>
     )
 }
