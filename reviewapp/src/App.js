@@ -1,7 +1,4 @@
 import ReviewPopup from './components/ReviewPopup';
-
-import { useEffect, useState } from 'react';
-import { reviewService } from './services/ReviewService'
 import './App.css';
 
 function App() {
