@@ -35,10 +35,14 @@ const ReviewPopup = () => {
         setTitle('')
     }
 
+    const remove = async (id) => {
+        await reviewService.remove(id)
+    }
+
     return (
         <Section>
             <AddReview title={title} onChangeTitle={onChangeTitle} text={text} setText={setText} add={add} />
-            {reviews && <ReviewList reviews={reviews}/>}
+            {reviews && <ReviewList reviews={reviews} remove={remove} />}
         </Section>
     )
 }

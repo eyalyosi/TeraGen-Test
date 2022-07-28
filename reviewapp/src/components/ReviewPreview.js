@@ -1,4 +1,19 @@
 import styled from 'styled-components'
+const Button = styled.button`
+display: none;
+position: absolute;
+width: 20px;
+height: 20px;
+right: -5px;
+top: -5px;
+background: #DC2D2D;
+color: #FFFFFF;
+border: 0px;
+border-radius: 10px;
+&:hover {
+    cursor: pointer
+}
+`
 
 const ReviewCard = styled.div`
 position: relative;
@@ -12,6 +27,9 @@ background: rgba(255, 255, 255, 0.1);
 border-radius: 10px 10px 10px 2px;
 &:hover {
     background: rgba(255, 255, 255, 0.25);
+}
+&:hover ${Button} {
+    display: inline-block;
 }
 `
 
@@ -27,28 +45,13 @@ align-items: center;
 color: rgba(255, 255, 255, 0.5);
 `
 
-const Button = styled.button`
-position: absolute;
-width: 20px;
-height: 20px;
-right: -5px;
-top: -5px;
-background: #DC2D2D;
-color: #FFFFFF;
-border: 0px;
-border-radius: 10px;
-&:hover {
-    cursor: pointer
-}
-`
-
-const ReviewPreview = ({ review }) => {
+const ReviewPreview = ({ review, remove }) => {
 
     return (
         <ReviewCard>
             <Title>{review.title}</Title>
             <Text>{review.text}</Text>
-            <Button>X</Button>
+            <Button onClick={() => remove(review._id)}>X</Button>
         </ReviewCard>
     )
 }

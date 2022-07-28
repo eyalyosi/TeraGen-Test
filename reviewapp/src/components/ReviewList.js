@@ -10,12 +10,12 @@ gap:10px;
 margin-top:20px
 `
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = ({ reviews, remove }) => {
     console.log(reviews);
     return (
         <Section>
             {reviews.map((review) => {
-                return <ReviewPreview key={review._id} review={review}/>
+                return <ReviewPreview key={review._id} review={review} remove={remove}/>
             })}
         </Section>
     )

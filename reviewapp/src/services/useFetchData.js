@@ -8,7 +8,6 @@ const useFetchData = () => {
 
     useEffect(() => {
         let cancel = false
-        // if (!cityName) return
         const fetchData = async () => {
             if (!cancel) {
                 setError(null);
